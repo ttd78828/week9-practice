@@ -10,9 +10,26 @@
     </header>
     <main>
       <p>Redtail Barn is restored 1920s barn out in the county, booked for weddings, receptions, and community gatherings. It seats up to 150 guests and sits about twenty minutes outside town, so most first-time visitors want a sense of the drive before they book a tour.</p>
+      <button onclick="getLocation()">See How Close You Are</button>
+      <p id="location-message"></p>
     </main>
     <footer>
       <p>&copy; 2026 Redtail Barn Event Space</p>
     </footer>
+    <script> 
+      function getLocation() {
+        navigator.geolocation.getCurrentPosition(showPosition, showError); 
+      }
+      function showError(error) {
+        var lat = position.coords.latitude.toFixed(1);
+        var lot = position.coords.longitude.toFixed(1);
+        document.getElementById("location-message").textContent =
+          "You're near " + lat + "," + lon + ". Redtail Barn is out i the county, so plan on extra drive time if you're coming from town.";
+      }
+      function showError(error) {
+        document.getElementById("location-message").textContent =
+          "We couldn't get your location, but that's alright. You can still browse the rest of the site and check our directions page for the address.";
+      }
+    </script>
   </body>
 </html>
